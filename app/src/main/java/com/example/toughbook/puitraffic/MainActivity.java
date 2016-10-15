@@ -2,6 +2,7 @@ package com.example.toughbook.puitraffic;
 
 import android.content.Intent;
 import android.media.MediaPlayer;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -36,8 +37,8 @@ public class MainActivity extends AppCompatActivity {
 
                 //Show WebView
                 String url = "https://www.youtube.com/watch?v=IcQXbgN1TZg";
-                Intent intent = Intent(Intent.ACTION_VIEW);
-                Intent.setData{url.parset(url)};
+                Intent intent = new Intent(Intent.ACTION_VIEW);
+                intent.setData(Uri.parse(url));
                 startActivity(intent);
 
             }  //onclick
