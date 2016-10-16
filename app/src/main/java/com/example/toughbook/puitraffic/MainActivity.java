@@ -6,6 +6,7 @@ import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 
@@ -47,14 +48,12 @@ public class MainActivity extends AppCompatActivity {
         //listview Controller
         //Get value from Class
         MyContant myContant = new MyContant();
-        int[] ints = myContant.getInts();
-
+        final int[] ints = myContant.getInts();
 
 
         //Get Value Form xml
-        String[] titleStrings = getResources().getStringArray(R.array.title);
-        String[] detailString = getResources().getStringArray(R.array.detail);
-
+        final String[] titleStrings = getResources().getStringArray(R.array.title);
+        final String[] detailString = getResources().getStringArray(R.array.detail);
 
 
         //Create Listview
@@ -62,6 +61,26 @@ public class MainActivity extends AppCompatActivity {
         TrafficAdapter trafficAdapter = new TrafficAdapter(MainActivity.this,
                 titleStrings, detailString, ints);
         listView.setAdapter(trafficAdapter);
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                Intent intent = new Intent(MainActivity.this, DetailActity.class);
+                intent.putExtra("Title", titleStrings[position]);
+                intent.putExtra("Image", ints[position]);
+                intent.putExtra("Detail", detailString[position]);
+                startActivity(intent);
+
+
+
+
+
+            }
+        });
+
+
+
 
 
     } //Main Method กลุ่มของคำสั่ง
