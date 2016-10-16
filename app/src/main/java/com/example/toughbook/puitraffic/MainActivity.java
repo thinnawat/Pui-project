@@ -44,6 +44,25 @@ public class MainActivity extends AppCompatActivity {
             }  //onclick
         });
 
+        //listview Controller
+        //Get value from Class
+        MyContant myContant = new MyContant();
+        int[] ints = myContant.getInts();
+
+
+
+        //Get Value Form xml
+        String[] titleStrings = getResources().getStringArray(R.array.title);
+        String[] detailString = getResources().getStringArray(R.array.detail);
+
+
+
+        //Create Listview
+
+        TrafficAdapter trafficAdapter = new TrafficAdapter(MainActivity.this,
+                titleStrings, detailString, ints);
+        listView.setAdapter(trafficAdapter);
+
 
     } //Main Method กลุ่มของคำสั่ง
 } //Main Class นี่คือคลาสหลัก
